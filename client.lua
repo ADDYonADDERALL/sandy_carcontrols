@@ -7,6 +7,19 @@ local window2 = false
 local window3 = false
 local twojstarynajebany = false
 
+Citizen.CreateThread(function ()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(1)
+    end
+
+    while ESX.GetPlayerData() == nil do
+        Citizen.Wait(10)
+    end
+
+    PlayerData = ESX.GetPlayerData()
+end) 
+
 Citizen.CreateThread(function()
  	while true do
 		Citizen.Wait(5)
